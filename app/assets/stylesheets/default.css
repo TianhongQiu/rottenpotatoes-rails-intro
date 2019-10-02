@@ -91,15 +91,6 @@ table#movies th, table#movies td {
   text-align: left;
 }
 
-#notice #warning {
-  background: rosybrown;
-  margin: 1em 0;
-  padding: 4px;
-}
 
-form label {
-  display: block;
-  line-height: 25px;
-  font-weight: bold;
-  color: maroon;
-}
+
+
