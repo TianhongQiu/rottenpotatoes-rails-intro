@@ -13,12 +13,25 @@ class MoviesController < ApplicationController
   def index
      
     @movies = Movie.all
+    @all_ratings = Movie.ratings 
+    
     @sort = params[:sort] 
+    @ratings = params[:ratings]
     
     if !@sort.nil?
       @movies = @movies.order(@sort)
     end
-
+    
+    if !@ratings.nil?
+      if !@ratings.kind_of?(Array) 
+        @ratings = @ratings.keys 
+      end
+      @movies = @movies.where({rating: @ratings}) 
+    else 
+      #when uncheck all the boxes
+      @ratings = Movie.ratings
+    end
+    
   end
 
   def new
