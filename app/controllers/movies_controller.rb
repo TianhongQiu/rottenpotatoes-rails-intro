@@ -15,8 +15,8 @@ class MoviesController < ApplicationController
     @movies = Movie.all
     @all_ratings = Movie.ratings 
     
-    @sort = params[:sort] 
-    @ratings = params[:ratings]
+    @sort = params[:sort] || session[:sort]
+    @ratings = params[:ratings] || session[:ratings]
     
     if !@sort.nil?
       @movies = @movies.order(@sort)
@@ -32,6 +32,8 @@ class MoviesController < ApplicationController
       @ratings = Movie.ratings
     end
     
+    session[:sort] = @sort
+    session[:ratings] = @ratings
   end
 
   def new
